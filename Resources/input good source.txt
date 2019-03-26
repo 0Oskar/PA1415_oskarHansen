@@ -1,0 +1,16 @@
+@startuml
+title Input Good
+
+object GoodsCollectionController
+object WarehouseClient
+object WarehouseServer
+object WarehouseHandler
+object Warehouse
+object GoodsCollection
+
+GoodsCollectionController --> WarehouseClient : 1.0 inputGood(warehouseId, floorId, goodCollectionId, Good newGood)
+WarehouseClient --> WarehouseServer : 1.1 inputGood(warehouseId, floorId, goodCollectionId, Good newGood)
+WarehouseServer --> WarehouseHandler : 1.2 inputGood(warehouseId, floorId, goodCollectionId, Good newGood)
+WarehouseHandler --> Warehouse : 1.3 inputGood(floorId, goodCollectionId, Good newGood)
+Warehouse --> GoodsCollection : 1.4 input(Good newGood)
+@enduml

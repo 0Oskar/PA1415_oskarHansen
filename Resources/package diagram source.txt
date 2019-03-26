@@ -1,0 +1,42 @@
+@startuml
+package Model {
+    class Warehouse {
+        id : uint
+        floors : vector<Floor>
+    }
+
+    class Floor {
+        id : uint
+        goodsCollections : vector<GoodsCollection>
+    }
+
+    class GoodsCollection {
+        id : uint
+        goods : vector<Good>
+        quantity : uint
+        temperature : float
+    }
+
+    class Good {
+        goodInformation : GoodInformation
+    }
+
+    class GoodInformation {
+        name : string
+        weight : float
+    }
+}
+
+package View {
+    class GoodView
+    class WarehouseView
+    class GoodsCollectionView
+    class StartScreen
+}
+
+package Controller {
+    class WarehouseController
+    class GoodsCollectionController
+    class GoodController
+}
+@enduml

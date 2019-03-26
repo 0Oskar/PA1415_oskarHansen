@@ -1,0 +1,17 @@
+@startuml
+
+title View Warehouse
+
+object UI
+object WarehouseClient
+object WarehouseServer
+object WarehouseHandler
+object setup
+
+UI --> WarehouseClient : 1.0 getWarehouse()
+WarehouseClient --> WarehouseServer : 1.1 getWarehouse(id)
+WarehouseServer --> WarehouseHandler : 1.2 getWarehouse(id)
+WarehouseServer --> WarehouseClient : 1.3 sendUpdate()
+WarehouseClient --> setup : 1.4 set up controllers and views
+
+@enduml

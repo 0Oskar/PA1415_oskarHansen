@@ -1,0 +1,23 @@
+@startuml
+
+title Move Good
+
+
+object WarehouseClient
+object WarehouseServer
+object WarehouseHandler
+object Warehouse
+object WarehouseController
+
+
+
+WarehouseController--> WarehouseClient: 1 MoveGood()
+WarehouseClient --> WarehouseServer:1.1 MoveGood(userId,uint warehouseId,uint floorId,uint goodId)
+WarehouseHandler <-- WarehouseServer: 1.2 goodId()
+WarehouseServer --> WarehouseHandler : 1.3 warehouseId()
+WarehouseHandler--> Warehouse: 2 floorId()
+WarehouseHandler--> Warehouse: 2.1 goodId()
+WarehouseServer --> WarehouseHandler: 1.4 floorid()
+
+
+@enduml

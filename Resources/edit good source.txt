@@ -1,0 +1,19 @@
+@startuml
+title Edit Good
+
+object GoodsCollectionController
+object WarehouseClient
+object WarehouseServer
+object WarehouseHandler
+object Warehouse
+object GoodsCollection
+
+GoodsCollectionController --> WarehouseClient : 1.0 lockGood(warehouseId, floorId, goodId, userId)
+WarehouseClient --> WarehouseServer : 1.1 lockGood(warehouseId, floorId, goodId, userId)
+WarehouseServer --> WarehouseHandler : 1.2 createLock(warehouseId, floorId, goodId, userId)
+
+WarehouseClient --> WarehouseServer : 2.0 editGood( warehouseId, floorId, goodId, userId, Good newGood)
+WarehouseServer --> WarehouseHandler : 2.1 editGood( warehouseId, floorId, goodId, userId, Good newGood)
+WarehouseHandler --> Warehouse : 2.2 editGood(floorId, goodId, Good newGood)
+Warehouse --> GoodsCollection : 2.3 edit(Good newGood)
+@enduml

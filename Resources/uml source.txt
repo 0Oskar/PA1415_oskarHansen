@@ -1,0 +1,132 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor Worker
+actor Administrator
+rectangle WarehouseSystem {
+    Worker            -- (View Warehouse)
+    (View Warehouse) ..> (Input Goods)   : include
+    (View Warehouse) ..> (Edit Goods)    : include
+    (View Warehouse) ..> (Move goods)    : include
+    (View Warehouse) ..> (View Trucks)   : include
+    (View Trucks)    ..> (Move Truck)    : include
+    (View Trucks)    ..> (Manage Trucks) : include
+
+    Administrator -- (Configure Warehouse)
+}
+
+rectangle CommunicationSystem {
+    Worker -- (Communicate)
+    (Communicate)    ..> (Send Message)  : include
+    (Communicate)    ..> (View Message)  : include
+}
+@enduml
+
+
+
+
+@startuml
+title View Warehouse
+Worker -> WarehouseClient : id
+activate WarehouseClient
+
+WarehouseClient -> WarehouseServer : getWarehouse(id)
+activate WarehouseServer
+
+WarehouseServer -> WarehouseClient : WarehouseMap
+deactivate WarehouseServer
+
+WarehouseClient --> Worker : display warehouse
+deactivate WarehouseClient
+@enduml
+
+
+
+
+@startuml
+title Edit Good and Input Good
+Worker -> WarehouseClient : select shelf
+activate WarehouseClient
+
+WarehouseClient -> WarehouseServer : requestLock(userId, warehouseId, shelfPos)
+activate WarehouseServer
+
+WarehouseServer -> Warehouse : lockShelf(userId, shelfPos)
+activate Warehouse
+
+Warehouse -> WarehouseServer : ok
+deactivate Warehouse
+
+WarehouseServer -> WarehouseClient : ok
+deactivate WarehouseServer
+deactivate WarehouseClient
+
+
+
+
+Worker -> WarehouseClient : Save Edit
+activate WarehouseClient
+
+WarehouseClient -> WarehouseServer : editShelf(userId, warehouseId, shelfId, goodInfo)
+deactivate WarehouseClient
+activate WarehouseServer
+
+WarehouseServer -> Warehouse : setShelf(userId, shelfId, goodInfo)
+deactivate WarehouseServer
+
+
+
+
+Worker -> WarehouseClient : Unlock Good
+activate WarehouseClient
+
+WarehouseClient -> WarehouseServer : unlockGood(userId, warehouseId, goodId)
+deactivate WarehouseClient
+activate WarehouseServer
+
+WarehouseServer -> Warehouse : unlockGood(userId, goodId)
+deactivate WarehouseServer
+
+@enduml
+
+
+
+@startuml
+title Move Good
+
+Worker -> WarehouseClient : select good
+activate WarehouseClient
+
+WarehouseClient -> WarehouseServer : requestLock(userId, warehouseId, goodId)
+activate WarehouseServer
+
+WarehouseServer -> Warehouse : lockGood(userId, goodId)
+activate Warehouse
+
+Warehouse -> WarehouseServer : ok
+deactivate Warehouse
+
+WarehouseServer -> WarehouseClient : ok
+deactivate WarehouseServer
+
+WarehouseClient -> Worker : ok
+deactivate WarehouseClient
+
+Worker -> WarehouseClient : move good
+activate WarehouseClient
+
+WarehouseClient -> WarehouseServer : moveGood(userId, warehouseId, goodId, position)
+deactivate WarehouseClient
+activate WarehouseServer
+
+WarehouseServer -> Warehouse : moveGood(userId, goodId, position)
+deactivate WarehouseServer
+activate Warehouse
+
+Warehouse -> Truck : moveGood(from, to)
+activate Truck
+
+Truck -> Warehouse : done, unlock good
+deactivate Truck
+deactivate Warehouse
+@enduml
