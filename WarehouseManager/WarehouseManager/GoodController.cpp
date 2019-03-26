@@ -28,3 +28,11 @@ void GoodController::setName(string newName) {
 Good* GoodController::getGood() {
 	return good;
 }
+
+void GoodController::setLock(bool newLockStatus)
+{
+	if (this->good)
+	{
+		good->setLock(newLockStatus);
+	}
+}

@@ -138,6 +138,7 @@
     <ClInclude Include="GoodsCollectionView.h" />
     <ClInclude Include="GoodView.h" />
     <ClInclude Include="StartScreen.h" />
+    <ClInclude Include="truck.h" />
     <ClInclude Include="Warehouse.h" />
     <ClInclude Include="WarehouseController.h" />
     <ClInclude Include="WarehouseView.h" />
@@ -155,6 +156,7 @@
     <ClCompile Include="main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Truck.cpp" />
     <ClCompile Include="Warehouse.cpp" />
     <ClCompile Include="WarehouseController.cpp" />
     <ClCompile Include="WarehouseView.cpp" />

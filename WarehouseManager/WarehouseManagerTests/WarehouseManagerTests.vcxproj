@@ -130,6 +130,7 @@
     <ClInclude Include="..\WarehouseManager\GoodsCollectionView.h" />
     <ClInclude Include="..\WarehouseManager\GoodView.h" />
     <ClInclude Include="..\WarehouseManager\StartScreen.h" />
+    <ClInclude Include="..\WarehouseManager\truck.h" />
     <ClInclude Include="..\WarehouseManager\Warehouse.h" />
     <ClInclude Include="..\WarehouseManager\WarehouseController.h" />
     <ClInclude Include="..\WarehouseManager\WarehouseView.h" />
@@ -145,6 +146,7 @@
     <ClCompile Include="..\WarehouseManager\GoodsCollectionView.cpp" />
     <ClCompile Include="..\WarehouseManager\GoodView.cpp" />
     <ClCompile Include="..\WarehouseManager\StartScreen.cpp" />
+    <ClCompile Include="..\WarehouseManager\Truck.cpp" />
     <ClCompile Include="..\WarehouseManager\Warehouse.cpp" />
     <ClCompile Include="..\WarehouseManager\WarehouseController.cpp" />
     <ClCompile Include="..\WarehouseManager\WarehouseView.cpp" />

@@ -2,11 +2,11 @@
 
 size_t Good::idCounter = 0;
 
-Good::Good() : quantity(0), id(idCounter++) {
+Good::Good() : quantity(0), id(idCounter++), locked(false) {
 
 }
 
-Good::Good(GoodInformation goodInfo, uint32_t quantity) : goodInfo(goodInfo), quantity(quantity), id(idCounter++) {
+Good::Good(GoodInformation goodInfo, uint32_t quantity) : goodInfo(goodInfo), quantity(quantity), id(idCounter++), locked(false) {
 
 }
 
@@ -36,4 +36,14 @@ uint32_t Good::getQuantity() const {
 
 const size_t Good::getId() const {
 	return id;
+}
+
+const bool Good::isLocked()
+{
+	return this->locked;
+}
+
+void Good::setLock(bool lock)
+{
+	this->locked = lock;
 }

@@ -9,5 +9,6 @@ public:
 	void setQuantity(uint32_t newQuantity);
 	void setWeight(float newWeight);
 	void setName(string newName);
+	void setLock(bool newLockStatus);
 	Good* getGood();
 };

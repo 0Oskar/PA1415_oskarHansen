@@ -57,6 +57,9 @@
     <ClInclude Include="..\WarehouseManager\WarehouseView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\WarehouseManager\truck.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TestInit.cpp">
@@ -109,6 +112,9 @@
     </ClCompile>
     <ClCompile Include="WarehouseControllerTests.cpp">
       <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WarehouseManager\Truck.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

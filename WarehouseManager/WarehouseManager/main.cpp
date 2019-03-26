@@ -17,7 +17,7 @@ int main() {
 	sf::RenderWindow window(sf::VideoMode(800, 800), "Warehouse Manager");
 	window.resetGLStates();
 	sfg::SFGUI sfgui;
-	StartScreen startScreen;	
+	StartScreen startScreen;
 	vector<Warehouse> warehouseHandler;
 	WarehouseView warehouseView;
 	WarehouseController warehouseController;
@@ -35,7 +35,7 @@ int main() {
 			while (window.pollEvent(event)) {
 				startScreen.handleEvent(event);
 				warehouseView.handleEvent(event);
-				
+
 				if (event.type == sf::Event::Closed) {
 					window.close();
 				}
@@ -45,7 +45,7 @@ int main() {
 					}
 				}
 			}
-			
+
 			if (clock.getElapsedTime().asMicroseconds() >= 1000) {
 				auto dt = clock.restart().asSeconds();
 
@@ -100,9 +100,16 @@ void setupMockWarehouse(Warehouse& warehouse) {
 	warehouse.addShelf(currentFloor, 1, 2);
 	warehouse.addShelf(currentFloor, 1, 3);
 	warehouse.addShelf(currentFloor, 1, 4);
+	warehouse.addShelf(currentFloor, 1, 5);
+
+	warehouse.addShelf(currentFloor, 5, 5);
+
+
 
 	warehouse.addGoodsCollection(currentFloor, 1, 1);
 	warehouse.addGood(currentFloor, 1, 1, Good(GoodInformation("TestGood", 0.999), 11));
 	warehouse.addGoodsCollection(currentFloor, 1, 2);
 	warehouse.addGoodsCollection(currentFloor, 1, 4);
+
+	warehouse.addTruck(currentFloor, 1, 7);
 }

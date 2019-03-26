@@ -7,6 +7,8 @@
 
 class WarehouseView : public sf::Drawable {
 private:
+	void setSprites();
+private:
 	const Warehouse* currentWarehouse;
 	const Floor* currentFloor;
 	WarehouseController* controller;
@@ -16,6 +18,7 @@ private:
 	sf::Sprite noShelfSprite;
 	sf::Sprite emptyShelfSprite;
 	sf::Sprite occupiedShelfSprite;
+	sf::Sprite truckSprite;
 	bool visible = false;
 public:
 	WarehouseView();

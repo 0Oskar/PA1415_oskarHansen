@@ -11,6 +11,7 @@ private:
 	size_t id;
 	GoodInformation goodInfo;
 	uint32_t quantity;
+	bool locked;
 public:
 	Good();
 	Good(GoodInformation goodInfo, uint32_t quantity);
@@ -21,4 +22,6 @@ public:
 	float getWeight() const;
 	uint32_t getQuantity() const;
 	const size_t getId() const;
+	const bool isLocked();
+	void setLock(bool lock);
 };

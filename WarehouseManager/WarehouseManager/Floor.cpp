@@ -39,12 +39,12 @@ GoodsCollection* Floor::getGoodsCollection(uint32_t xPos, uint32_t yPos) {
 
 bool Floor::addGood(uint32_t xPos, uint32_t yPos, Good good) {
 	GoodsCollection* collection = nullptr;
-	
+
 	if (goodsCollections.count(sf::Vector2u(xPos, yPos))) {
 		collection = &goodsCollections.at(sf::Vector2u(xPos, yPos));
 		collection->addGood(std::move(good));
 	}
-	
+
 	return collection != nullptr;
 }
 
@@ -88,6 +88,41 @@ Floor::Tile Floor::getTile(uint32_t xPos, uint32_t yPos) const throw(...) {
 	if (this->width <= xPos && this->height <= yPos) {
 		throw "Tried to get out of bounds tile";
 	}
-	
+
 	return tileMap[xPos][yPos];
+}
+
+
+bool Floor::addTruck(uint32_t xPos, uint32_t yPos)
+{
+
+	this->trucks.push_back(Truck(sf::Vector2u(xPos, yPos)));
+
+
+	return true;
+}
+const Truck* Floor::getTruck(uint32_t xPos, uint32_t yPos) const
+{
+	for (int truckNr = 0; truckNr < this->trucks.size(); truckNr++)
+	{
+		if (this->trucks.at(truckNr).getCurrentPos() == sf::Vector2u(xPos, yPos))
+		{
+			return &this->trucks.at(truckNr);
+		}
+	}
+
+	return nullptr;
+}
+
+Truck* Floor::getTruck(uint32_t xPos, uint32_t yPos)
+{
+	for (int truckNr = 0; truckNr < this->trucks.size(); truckNr++)
+	{
+		if (this->trucks.at(truckNr).getCurrentPos() == sf::Vector2u(xPos, yPos))
+		{
+			return &this->trucks.at(truckNr);
+		}
+	}
+
+	return nullptr;
 }

@@ -25,4 +25,7 @@ public:
 	static void setIdCounter(uint32_t value);
 	const Floor* getFloor(uint32_t floorIndex) const;
 	uint32_t getId() const;
+	bool addTruck(uint32_t floorIndex, uint32_t xPos, uint32_t yPos);
+	const Truck* getTruck(uint32_t floorIndex, uint32_t xPos, uint32_t yPos) const;
+	Truck* getTruck(uint32_t floorIndex, uint32_t xPos, uint32_t yPos);
 };

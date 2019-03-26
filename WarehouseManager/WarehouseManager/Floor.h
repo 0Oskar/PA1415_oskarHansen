@@ -4,6 +4,7 @@
 #include "GoodsCollection.h"
 #include <SFML/System.hpp>
 #include <map>
+#include"truck.h"
 using namespace std;
 
 namespace {
@@ -33,6 +34,7 @@ private:
 	uint32_t goodsCollectionIdCounter = 0;
 	vector<vector<Tile>> tileMap;
 	map<sf::Vector2u, GoodsCollection, vecComp> goodsCollections;
+	vector<Truck> trucks;
 public:
 	Floor(uint32_t id, uint32_t width, uint32_t height);
 	bool addGoodsCollection(uint32_t xPos, uint32_t yPos);
@@ -47,4 +49,8 @@ public:
 	uint32_t getWidth() const;
 	uint32_t getHeight() const;
 	Tile getTile(uint32_t xPos, uint32_t yPos) const throw(...);
+	bool addTruck(uint32_t xPos, uint32_t yPos);
+	const Truck* getTruck(uint32_t xPos, uint32_t yPos) const;
+	Truck* getTruck(uint32_t xPos, uint32_t yPos);
+
 };

@@ -54,3 +54,20 @@ uint32_t Warehouse::getId() const {
 const Floor* Warehouse::getFloor(uint32_t floorIndex) const {
 	return &floors[floorIndex];
 }
+
+bool Warehouse::addTruck(uint32_t floorIndex, uint32_t xPos, uint32_t yPos)
+{
+	this->floors[floorIndex].addTruck(xPos, yPos);
+
+	return true;
+}
+const Truck* Warehouse::getTruck(uint32_t floorIndex, uint32_t xPos, uint32_t yPos) const
+{
+	return this->floors[floorIndex].getTruck(xPos, yPos);
+}
+
+Truck* Warehouse::getTruck(uint32_t floorIndex, uint32_t xPos, uint32_t yPos)
+{
+	return this->floors[floorIndex].getTruck(xPos, yPos);
+
+}
