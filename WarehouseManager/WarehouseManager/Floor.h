@@ -52,5 +52,6 @@ public:
 	bool addTruck(uint32_t xPos, uint32_t yPos);
 	const Truck* getTruck(uint32_t xPos, uint32_t yPos) const;
 	Truck* getTruck(uint32_t xPos, uint32_t yPos);
+	void update(float sec);
 
 };

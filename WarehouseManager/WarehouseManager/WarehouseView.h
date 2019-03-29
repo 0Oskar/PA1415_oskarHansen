@@ -4,6 +4,7 @@
 #include "GoodsCollectionView.h"
 #include "GoodView.h"
 #include "WarehouseController.h"
+#include"TruckViewer.h"
 
 class WarehouseView : public sf::Drawable {
 private:
@@ -13,6 +14,7 @@ private:
 	const Floor* currentFloor;
 	WarehouseController* controller;
 	GoodsCollectionView goodsCollectionView;
+	TruckViwer truckView;
 	uint32_t tileDrawSize = 32;
 	sf::Texture whiteTexture;
 	sf::Sprite noShelfSprite;
@@ -32,4 +34,5 @@ public:
 	void setController(WarehouseController* controller);
 	GoodsCollectionView* getGoodsCollectionView();
 	GoodView* getGoodView();
+	TruckViwer* getTruckViewer();
 };

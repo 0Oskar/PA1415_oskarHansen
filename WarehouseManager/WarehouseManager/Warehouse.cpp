@@ -55,6 +55,11 @@ const Floor* Warehouse::getFloor(uint32_t floorIndex) const {
 	return &floors[floorIndex];
 }
 
+Floor* Warehouse::getFlor(uint32_t floorIndex)
+{
+	return &floors[floorIndex];
+}
+
 bool Warehouse::addTruck(uint32_t floorIndex, uint32_t xPos, uint32_t yPos)
 {
 	this->floors[floorIndex].addTruck(xPos, yPos);
@@ -66,8 +71,15 @@ const Truck* Warehouse::getTruck(uint32_t floorIndex, uint32_t xPos, uint32_t yP
 	return this->floors[floorIndex].getTruck(xPos, yPos);
 }
 
-Truck* Warehouse::getTruck(uint32_t floorIndex, uint32_t xPos, uint32_t yPos)
+Truck* Warehouse::getTruck(uint32_t floorIndex, uint32_t xPos, uint32_t yPos) 
 {
 	return this->floors[floorIndex].getTruck(xPos, yPos);
 
+}
+void Warehouse::update(float sec)
+{
+	for (int i = 0; i < floors.size(); i++)
+	{
+		this->floors[i].update(sec);
+	}
 }

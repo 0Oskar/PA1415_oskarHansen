@@ -39,12 +39,12 @@ GoodsCollection* Floor::getGoodsCollection(uint32_t xPos, uint32_t yPos) {
 
 bool Floor::addGood(uint32_t xPos, uint32_t yPos, Good good) {
 	GoodsCollection* collection = nullptr;
-
+	
 	if (goodsCollections.count(sf::Vector2u(xPos, yPos))) {
 		collection = &goodsCollections.at(sf::Vector2u(xPos, yPos));
 		collection->addGood(std::move(good));
 	}
-
+	
 	return collection != nullptr;
 }
 
@@ -88,7 +88,7 @@ Floor::Tile Floor::getTile(uint32_t xPos, uint32_t yPos) const throw(...) {
 	if (this->width <= xPos && this->height <= yPos) {
 		throw "Tried to get out of bounds tile";
 	}
-
+	
 	return tileMap[xPos][yPos];
 }
 
@@ -125,4 +125,11 @@ Truck* Floor::getTruck(uint32_t xPos, uint32_t yPos)
 	}
 
 	return nullptr;
+}
+void Floor::update(float sec)
+{
+	for (int i = 0; i < this->trucks.size(); i++)
+	{
+		this->trucks[i].update(sec);
+	}
 }

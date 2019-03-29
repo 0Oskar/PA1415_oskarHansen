@@ -2,23 +2,23 @@
 #define _TRUCKCONTROLLER_H_
 #include"truck.h"
 
+
 class TruckController
 {
-private:
-
 
 private:
-	int nrOfTrucks;
-	Truck* trucks;
+	Truck* truck;
 	
-
-
-
-
 public:
-	TruckController();
-	void addOrder(uint32_t fromXPos, uint32_t fromYPos, uint32_t toXPos, int32_t ToyPos, Good &goodToMove);
-	void moveTruck(uint32_t truckIndex, uint32_t fromYPos, uint32_t toXPos);
+	void moveTruck(Truck* truck, const uint32_t &toXPos, const uint32_t &toYPos);
+	void setLock(bool lockStatus);
+	void setDateOfLatestService(const std::string &newDate);
+	void setTruckManufactor(const std::string &newManufactor);
+	void setBatteryType(const std::string &newBatteryType);
+	void setTruck(Truck* newTruck);
+	Truck* getTruck();
+
+
 
 	
 

@@ -7,6 +7,7 @@ class WarehouseController {
 private:
 	Warehouse* warehouse;
 	GoodsCollectionController goodsCollectionController;
+	TruckController truckController;
 
 public:
 	void setWarehouse(Warehouse* warehouse);
@@ -14,4 +15,6 @@ public:
 	GoodsCollectionController* getGoodsCollectionController();
 	GoodController* getGoodController();
 	Warehouse* getWarehouse();
+	void setTruck(uint32_t floor, uint32_t xPos, uint32_t yPos);
+	TruckController* getTruckController();
 };

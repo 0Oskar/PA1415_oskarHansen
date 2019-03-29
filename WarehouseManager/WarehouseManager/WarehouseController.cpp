@@ -19,3 +19,14 @@ GoodController* WarehouseController::getGoodController() {
 Warehouse* WarehouseController::getWarehouse() {
 	return warehouse;
 }
+
+TruckController*  WarehouseController::getTruckController()
+{
+	return &this->truckController;
+}
+
+void WarehouseController::setTruck(uint32_t floor, uint32_t xPos, uint32_t yPos)
+{
+	this->truckController.setTruck(warehouse->getTruck(floor, xPos, yPos));
+
+}

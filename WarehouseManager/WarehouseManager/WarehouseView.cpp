@@ -3,7 +3,7 @@
 WarehouseView::WarehouseView() {
 	this->currentWarehouse = nullptr;
 	this->currentFloor = nullptr;
-
+	
 	setSprites();
 }
 
@@ -51,6 +51,7 @@ void WarehouseView::draw(sf::RenderTarget& target, sf::RenderStates states) cons
 				{
 					target.draw(truckSprite, states);
 					states.transform.translate(0, tileDrawSize);
+					
 				}
 				else
 				{
@@ -68,7 +69,7 @@ void WarehouseView::draw(sf::RenderTarget& target, sf::RenderStates states) cons
 				}
 			}
 		}
-
+	
 
 	}
 }
@@ -78,7 +79,7 @@ void WarehouseView::handleEvent(sf::Event event) {
 		return;
 	}
 	goodsCollectionView.handleEvent(event);
-
+	truckView.handleEvent(event);
 	if (event.type == sf::Event::MouseButtonReleased) {
 		if (event.mouseButton.button == sf::Mouse::Left) {
 			sf::Vector2f clickPos(event.mouseButton.x, event.mouseButton.y);
@@ -87,6 +88,15 @@ void WarehouseView::handleEvent(sf::Event event) {
 				if (goodsCollection) {
 					goodsCollectionView.setGoodsCollection(goodsCollection);
 					controller->setGoodsCollection(currentFloor->getId(), event.mouseButton.x / 32, event.mouseButton.y / 32);
+					std::cout << "Beep Boop In Dah GoodsCollectionView" << std::endl;
+				}
+			}
+			if (!truckView.getRect().contains(clickPos)) {
+				const Truck* truck = currentFloor->getTruck(event.mouseButton.x / 32, event.mouseButton.y / 32);
+				if (truck) {
+					truckView.setTruck(truck);
+					controller->setTruck(currentFloor->getId(), event.mouseButton.x / 32, event.mouseButton.y / 32);
+					std::cout << "In truck" << std::endl;
 				}
 			}
 		}
@@ -95,6 +105,13 @@ void WarehouseView::handleEvent(sf::Event event) {
 
 void WarehouseView::update(float seconds) {
 	goodsCollectionView.update(seconds);
+	truckView.update(seconds);
+	if (this->currentWarehouse != nullptr)
+	{
+	
+	int floor = currentFloor->getId();
+	controller->getWarehouse()->getFlor(floor)->update(seconds);
+	}
 }
 
 void WarehouseView::setVisible(bool val) {
@@ -113,4 +130,10 @@ void WarehouseView::setController(WarehouseController* controller) {
 	this->controller = controller;
 	this->goodsCollectionView.setController(controller->getGoodsCollectionController());
 	this->goodsCollectionView.getGoodView()->setController(controller->getGoodController());
+	this->truckView.setController(controller->getTruckController());
+}
+
+TruckViwer* WarehouseView::getTruckViewer()
+{
+	return &this->truckView;
 }
