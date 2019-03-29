@@ -25,6 +25,20 @@ package Model {
         name : string
         weight : float
     }
+    
+    class Truck
+    {
+        pos : float2
+        shouldMoveTo : float2
+        truckInformation : TruckInformation
+    }
+    
+    class TruckInformation
+    {
+        dateOfLatestService : string
+        truckManufactor : string
+        batteryType : string
+    }
 }
 
 package View {
@@ -32,11 +46,13 @@ package View {
     class WarehouseView
     class GoodsCollectionView
     class StartScreen
+    class TruckView
 }
 
 package Controller {
     class WarehouseController
     class GoodsCollectionController
     class GoodController
+    class TruckController
 }
 @enduml

@@ -14,16 +14,25 @@ together {
     class GoodView
     class WarehouseView
     class GoodsCollectionView
+    class TruckView
 }
 
 together {
     class WarehouseController
     class GoodsCollectionController
     class GoodController
+    class TruckController
+}
+
+together {
+    class Truck
+    class TrucKInformation
 }
 
 StartScreen ---> WarehouseView
 StartScreen ---> Warehouse
+
+Truck "1" ---* TruckInformation
 
 Warehouse "*" ---* Floor
 
@@ -37,9 +46,16 @@ WarehouseView "1" ---o Warehouse : const
 WarehouseView "1" ---o Floor : const
 WarehouseView "1" ---o WarehouseController
 WarehouseView "1" ---* GoodsCollectionView
+WarehouseView "1" ---* TruckView
+WarehouseView "1" ---o TruckController
 
 WarehouseController "1" ---o Warehouse
 WarehouseController "1" ---* GoodsCollectionController
+WarehouseController "1" ---* TruckController
+
+TruckController "1" ---o Truck
+
+
 
 GoodsCollectionView "1" ---o GoodsCollection : const
 GoodsCollectionView "1" ---o GoodsCollectionController : const
@@ -47,6 +63,10 @@ GoodsCollectionView "1" ---* GoodView
 
 GoodsCollectionController "1" ---o GoodsCollection
 GoodsCollectionController "1" ---* GoodController
+
+TruckView "1" ---o Truck : const
+TruckView "1" ---o TruckController
+
 
 GoodView "1" ---o Good : const
 GoodView "1" ---o GoodController
