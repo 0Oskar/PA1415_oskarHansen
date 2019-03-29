@@ -9,16 +9,16 @@ GoodView::GoodView() {
 
 	nameEntry = sfg::Entry::Create();
 	nameEntry->SetRequisition(sf::Vector2f(150, 30));
-	
+
 	quantitySpinButton = sfg::SpinButton::Create(0, 1000000, 1);
 	quantitySpinButton->SetRequisition(sf::Vector2f(150, 30));
-	
+
 	weightSpinButton = sfg::SpinButton::Create(0, 1000000, 0.1);
 	weightSpinButton->SetRequisition(sf::Vector2f(150, 30));
 	weightSpinButton->SetDigits(1);
 
 	saveButton = sfg::Button::Create("Save");
-	
+
 	windowBox = sfg::Box::Create(sfg::Box::Orientation::VERTICAL, 5.f);
 	windowBox->SetRequisition(sf::Vector2f(180, 200));
 	windowBox->Pack(nameLabel);

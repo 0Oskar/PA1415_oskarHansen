@@ -112,4 +112,5 @@ void setupMockWarehouse(Warehouse& warehouse) {
 	warehouse.addGoodsCollection(currentFloor, 1, 4);
 
 	warehouse.addTruck(currentFloor, 1, 7);
+
 }

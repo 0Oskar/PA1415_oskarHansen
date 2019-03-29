@@ -1,0 +1,19 @@
+@startuml
+title Move Truck
+
+object TruckController
+object WarehouseClient
+object WarehouseServer
+object WarehouseHandler
+object Warehouse
+object Truck
+
+TruckController --> WarehouseClient : 1.0 lockTruck(warehouseId, floorId, truckId, userId)
+WarehouseClient --> WarehouseServer : 1.1 lockTruck(warehouseId, floorId, truckId, userId)
+WarehouseServer --> WarehouseHandler : 1.2 createLock(warehouseId, floorId, truckId, userId)
+
+WarehouseClient --> WarehouseServer : 2.0 moveTruck( warehouseId, floorId, truckId, userId, Position newPosition)
+WarehouseServer --> WarehouseHandler : 2.1 moveTruck( warehouseId, floorId, truckId, userId, Position newPosition)
+WarehouseHandler --> Warehouse : 2.2 moveTruck(floorId, truckId, Position newPosition)
+Warehouse --> Truck : 2.3 moveTowards(Position newPosition)
+@enduml

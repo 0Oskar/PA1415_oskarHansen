@@ -1,11 +1,11 @@
 #include "GoodInformation.h"
 
 GoodInformation::GoodInformation() : name(), weight(0) {
-	
+
 }
 
 GoodInformation::GoodInformation(string name) : name(name), weight(0) {
-	
+
 }
 
 GoodInformation::GoodInformation(string name, float weight) : name(name), weight(weight) {

@@ -2,15 +2,15 @@
 
 StartScreen::StartScreen() {
 	this->box = sfg::Box::Create(sfg::Box::Orientation::HORIZONTAL);
-	
+
 	this->warehouseSelect = sfg::ComboBox::Create();
-	this->loadWarehouseButton = sfg::Button::Create("Load Warehouse");	
+	this->loadWarehouseButton = sfg::Button::Create("Load Warehouse");
 
 	box->SetSpacing(8.f);
 	box->Pack(warehouseSelect);
 	box->Pack(loadWarehouseButton);
 	box->SetAllocation(sf::FloatRect(330, 200, 0, 0));
-	
+
 	loadWarehouseButton->GetSignal(sfg::Widget::OnLeftClick).Connect([&] { this->box->Show(false); });
 }
 

@@ -14,14 +14,14 @@ GoodsCollectionView::GoodsCollectionView() {
 	scrolledWindow->AddWithViewport(scrolledWindowBox);
 
 	addGoodButton = sfg::Button::Create("Add...");
-	
+
 	mainWindowBox = sfg::Box::Create(sfg::Box::Orientation::HORIZONTAL);
 	mainWindowBox->Pack(addGoodButton);
 	mainWindowBox->Pack(scrolledWindow);
 	mainWindowBox->Pack(goodView.getWindow());
-	
+
 	mainWindow->Add(mainWindowBox);
-	
+
 	setVisible(false);
 	addGoodButton->GetSignal(sfg::Button::OnLeftClick).Connect([&] {
 		if (controller) {
@@ -29,7 +29,7 @@ GoodsCollectionView::GoodsCollectionView() {
 			fillWindow();
 		}
 	});
-	
+
 	goodView.getSaveButton()->GetSignal(sfg::Button::OnLeftClick).Connect([&] {
 		fillWindow();
 	});
@@ -45,10 +45,10 @@ GoodsCollectionView::GoodsCollectionView(GoodsCollection* goodsCollection) {
 
 void GoodsCollectionView::fillWindow() {
 	scrolledWindowBox->RemoveAll();
-	
+
 	if (goodsCollection) {
 		const vector<Good> goods = goodsCollection->getGoods();
-		for (uint32_t i = 0; i < goods.size(); ++i){
+		for (uint32_t i = 0; i < goods.size(); ++i) {
 			auto newButton = sfg::Button::Create(goods[i].getName());
 			newButton->SetRequisition(sf::Vector2f(100, 25));
 			newButton->GetSignal(sfg::Button::OnLeftClick).Connect([&, i] {
